@@ -9,6 +9,7 @@ import main.GamePanel;
 public class MouseInputs implements MouseListener, MouseMotionListener{
 
     private GamePanel gamePanel;
+
     public MouseInputs(GamePanel gamePanel){
         this.gamePanel = gamePanel;
     }
@@ -32,7 +33,6 @@ public class MouseInputs implements MouseListener, MouseMotionListener{
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        
     }
 
     @Override

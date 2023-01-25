@@ -27603,3 +27603,5 @@ ADVERTENCIA: Unmatched cancel notification for request id 3025
 	at java.lang.Thread.run(Thread.java:836)
 
 2023.01.24 13:21:15 INFO  time: code lens generation in 7.04s
+2023.01.25 09:31:31 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\medlinetec\Desktop\Pruebas_de_codigo\ComoProgramarEnJava\PruebasJava\GameProject\GameProject\.metals\lsp.trace.json or C:\Users\medlinetec\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2023.01.25 09:31:34 INFO  logging to file C:\Users\medlinetec\Desktop\Pruebas_de_codigo\ComoProgramarEnJava\PruebasJava\GameProject\GameProject\.metals\metals.log
