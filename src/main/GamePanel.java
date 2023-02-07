@@ -1,27 +1,43 @@
 package main;
 
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.Random;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
 
 public class GamePanel extends JPanel{
-    private float xDelta = 100, yDelta = 100;
-    private float xDir = 1f, yDir = 1f;
-    private Color color= new Color(119, 51, 255);
-    private Random random;
-
     MouseInputs mouseInputs = new MouseInputs(this);
+    private float xDelta = 100, yDelta = 100;
+    private BufferedImage img, subImg;
 
     public GamePanel(){
-        random = new Random();
         addKeyListener(new KeyboardInputs(this));
+        importImg();
+        setPanelSize();
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
+    }
+
+    private void setPanelSize() {
+        Dimension size = new Dimension(1280, 800);
+        setPreferredSize(size);
+    }
+
+    private void importImg(){
+        InputStream is = getClass().getResourceAsStream("player_sprites.png");
+
+        try {
+            img = ImageIO.read(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void changeXDelta(int value){
@@ -39,30 +55,9 @@ public class GamePanel extends JPanel{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        updateRectangle();
 
-        g.setColor(color);
-        g.fillRect((int)xDelta, (int)yDelta, 200, 50);
-    }
-
-    private void updateRectangle(){
-        xDelta += xDir;
-        if(xDelta > 400 || xDelta < 0){
-            xDir *= -1;
-            color = getRndColor();
-        }
-        yDelta += yDir;
-        if(yDelta > 400 || yDelta < 0){
-            yDir *= -1;
-            color = getRndColor();
-        }
-    }
-
-    private Color getRndColor() {
-        int r = random.nextInt(255);
-        int g = random.nextInt(255);
-        int b = random.nextInt(255);
-        return new Color(r, g, b);
+        subImg = img.getSubimage(1*64, 8*40, 64, 40);
+        g.drawImage(subImg, (int) xDelta, (int) yDelta, 128, 80, null);
     }
 
 }
