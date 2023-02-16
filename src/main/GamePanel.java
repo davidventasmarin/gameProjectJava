@@ -75,6 +75,13 @@ public class GamePanel extends JPanel{
         this.yDelta = y;
     }
 
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        updateAnimationTick();
+        g.drawImage(idleAnimation[animationIndex], (int) xDelta, (int) yDelta, 128, 80, null);
+    }
+
     public void updateAnimationTick(){
         animationTick++;
         if(animationTick >= animationSpeed){
@@ -84,13 +91,6 @@ public class GamePanel extends JPanel{
                 animationIndex = 0;
             }
         }
-    }
-
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        updateAnimationTick();
-        g.drawImage(idleAnimation[animationIndex], (int) xDelta, (int) yDelta, 128, 80, null);
     }
 
 }
