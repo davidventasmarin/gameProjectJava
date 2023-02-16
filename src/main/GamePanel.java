@@ -18,7 +18,7 @@ public class GamePanel extends JPanel{
     private float xDelta = 100, yDelta = 100;
     private BufferedImage img;
     private BufferedImage[] idleAnimation;
-    private int animationTick, animationIndex, animationSpeed = 30;
+    private int animationTick, animationIndex, animationSpeed = 15;
 
     public GamePanel(){
         addKeyListener(new KeyboardInputs(this));
